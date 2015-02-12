@@ -1,0 +1,340 @@
+Part one:
+
+1) database test is empty
+RESULTS:
+mysql> use test;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+2) Table func contains columns name, ret, dl, type
+
+RESULTS:
+
+mysql> desc func;
++-------+------------------------------+------+-----+---------+-------+
+| Field | Type                         | Null | Key | Default | Extra |
++-------+------------------------------+------+-----+---------+-------+
+| name  | char(64)                     | NO   | PRI |         |       |
+| ret   | tinyint(1)                   | NO   |     | 0       |       |
+| dl    | char(128)                    | NO   |     |         |       |
+| type  | enum('function','aggregate') | NO   |     | NULL    |       |
++-------+------------------------------+------+-----+---------+-------+
+4 rows in set (0.13 sec)
+ 
+This table is used for storing functions
+
+3) list all the 10 states
+i)
++-------------+------------+-----------+----------------------+----+
+| state_name  | population | land_area | accidents_percentage | ID |
++-------------+------------+-----------+----------------------+----+
+| california  |   38802500 |    423970 |      high                	 |  1 |
+| albama      |    4833742 |     50645  | 	high                 	|  2 |
+| alaska      |     735132 |    570641   | 	high                          |  3 |
+| arizona     |    6626624 |    113594 | 	low                  	|  4 |
+| arkansas    |    2959373 |     53035 | 	high                 	|  5 |
+| delaware    |     925749 |      1949  | 	low                  	|  6 |
+| connecticut |    3596080 |      4842 | 	high                 	|  7 |
+| florida     |   19552860 |     53642 | 	low                  	|  8 |
+| georgia     |    9992167 |     57513 | 	low                  	|  9 |
+| hawwaii     |    1104054 |      6423 | 	low                  	| 10 |
++-------------+------------+-----------+----------------------+----+
+
+ii) colu,mns id descending order of population
+
++-------------+------------+-----------+----------------------+----+
+| state_name  | population | land_area | accidents_percentage   | ID |
++-------------+------------+-----------+----------------------+----+
+| california  |   38802500 |    423970  |	 high                 	|  1 |
+| florida       |  19552860 |     53642   |	 low                  	|  8 |
+| georgia      |    9992167 |     57513   |	 low                  	|  9 |
+| westvirgini |    9012342 |      4123    | 	high                 	| 47 |
+| wisconsin  |    8906786 |      6785    | 	high                 	| 48 |
+| wyoming    |    8765021 |     14067   | 	high                 	| 49 |
+| vermont     |    6756434 |      7685    | 	low                  	| 45 |
+| arizona      |    6626624 |    113594 | 	low                  	|  4 |
+| caloroda   |    5676545 |      8675    | 	high                 	| 44 |
+| nevada      |    5674534 |      6786    | 	high                 	| 27 |
++-------------+------------+-----------+----------------------+----+
+
+iii) Average of the population;
++-----------------+
+| avg(population) |
++-----------------+
+|    3680447.0800 |
++-----------------+
+1 row in set (0.00 sec)
+
+PART TWO:
+
++-------------+------------+-----------+----------------------+----+
+| state_name  | population | land_area | accidents_percentage | ID |
++-------------+------------+-----------+----------------------+----+
+| alaska      |     735132 |    570641 | high                 |  3 |
+| albama      |    4833742 |     50645 | high                 |  2 |
+| arizona     |    6626624 |    113594 | low                  |  4 |
+| arkansas    |    2959373 |     53035 | high                 |  5 |
+| california  |   38802500 |    423970 | high                 |  1 |
+| caloroda    |    5676545 |      8675 | high                 | 44 |
+| connecticut |    3596080 |      4842 | high                 |  7 |
+| delaware    |     925749 |      1949 | low                  |  6 |
+| florida     |   19552860 |     53642 | low                  |  8 |
+| georgia     |    9992167 |     57513 | low                  |  9 |
+| hawwaii     |    1104054 |      6423 | low                  | 10 |
+| idaho       |     161234 |      4354 | low                  | 11 |
+| illinois    |     456724 |      5672 | low                  | 12 |
+| indiana     |      34523 |      5674 | high                 | 13 |
+| iowa        |      56782 |      5674 | low                  | 14 |
+| kansas      |     567456 |      5674 | low                  | 15 |
+| kentucky    |     567456 |      5463 | high                 | 16 |
+| louisiana   |      56745 |      6754 | high                 | 17 |
+| maine       |      56743 |      4563 | low                  | 18 |
+| maryland    |     567456 |      4534 | low                  | 19 |
+| massachuset |      54673 |      5463 | high                 | 20 |
+| michigan    |     435644 |      6754 | high                 | 21 |
+| minnesota   |    5645345 |      5643 | low                  | 22 |
+| mississipi  |     564534 |      6754 | high                 | 23 |
+| missouri    |    4567565 |      6753 | low                  | 24 |
+| montana     |     546754 |      5434 | low                  | 25 |
+| nebraska    |     675437 |      5674 | high                 | 26 |
+| nevada      |    5674534 |      6786 | high                 | 27 |
+| newhampshir |    5673423 |      6543 | high                 | 28 |
+| newjersey   |     567453 |      2343 | high                 | 29 |
+| newmwxico   |     456784 |      2123 | low                  | 30 |
+| newyork     |     564567 |      4354 | high                 | 31 |
+| nortcarolin |     345632 |     12321 | high                 | 32 |
+| northdakota |     654657 |      3245 | high                 | 33 |
+| ohio        |     765476 |      3124 | low                  | 34 |
+| okalahoma   |    3425467 |     12345 | low                  | 35 |
+| oregon      |     212345 |      4324 | low                  | 36 |
+| pennsylvani |    4567345 |     23432 | high                 | 37 |
+| rhodeisland |     564765 |      2563 | low                  | 38 |
+| southcaroli |    3423567 |      2098 | low                  | 39 |
+| southdakota |    3109345 |      2340 | high                 | 40 |
+| tennesse    |    2070831 |      2305 | high                 | 41 |
+| texas       |    3102030 |     10089 | high                 | 42 |
+| utah        |     108097 |      4098 | low                  | 43 |
+| vermont     |    6756434 |      7685 | low                  | 45 |
+| virginia    |     908535 |     89745 | high                 | 50 |
+| washington  |    4567021 |     56732 | high                 | 46 |
+| westvirgini |    9012342 |      4123 | high                 | 47 |
+| wisconsin   |    8906786 |      6785 | high                 | 48 |
+| wyoming     |    8765021 |     14067 | high                 | 49 |
++-------------+------------+-----------+----------------------+----+
+
+PART THREE:
+
+1) Join 50 productname from one table to ordernumber in anothertable
+
+QUERRY:
+select ordernumber, productname from orderdetails join products on products.productcode=orderdetails.productcode limit 50;
+
+RESULTS:
+
++-------------+---------------------------------------+
+| ordernumber | productname                           |
++-------------+---------------------------------------+
+|       10107 | 1969 Harley Davidson Ultimate Chopper |
+|       10121 | 1969 Harley Davidson Ultimate Chopper |
+|       10134 | 1969 Harley Davidson Ultimate Chopper |
+|       10145 | 1969 Harley Davidson Ultimate Chopper |
+|       10159 | 1969 Harley Davidson Ultimate Chopper |
+|       10168 | 1969 Harley Davidson Ultimate Chopper |
+|       10180 | 1969 Harley Davidson Ultimate Chopper |
+|       10188 | 1969 Harley Davidson Ultimate Chopper |
+|       10201 | 1969 Harley Davidson Ultimate Chopper |
+|       10211 | 1969 Harley Davidson Ultimate Chopper |
+|       10223 | 1969 Harley Davidson Ultimate Chopper |
+|       10237 | 1969 Harley Davidson Ultimate Chopper |
+|       10251 | 1969 Harley Davidson Ultimate Chopper |
+|       10263 | 1969 Harley Davidson Ultimate Chopper |
+|       10275 | 1969 Harley Davidson Ultimate Chopper |
+|       10285 | 1969 Harley Davidson Ultimate Chopper |
+|       10299 | 1969 Harley Davidson Ultimate Chopper |
+|       10309 | 1969 Harley Davidson Ultimate Chopper |
+|       10318 | 1969 Harley Davidson Ultimate Chopper |
+|       10329 | 1969 Harley Davidson Ultimate Chopper |
+|       10341 | 1969 Harley Davidson Ultimate Chopper |
+|       10354 | 1969 Harley Davidson Ultimate Chopper |
+|       10361 | 1969 Harley Davidson Ultimate Chopper |
+|       10375 | 1969 Harley Davidson Ultimate Chopper |
+|       10388 | 1969 Harley Davidson Ultimate Chopper |
+|       10399 | 1969 Harley Davidson Ultimate Chopper |
+|       10403 | 1969 Harley Davidson Ultimate Chopper |
+|       10417 | 1969 Harley Davidson Ultimate Chopper |
+|       10103 | 1952 Alpine Renault 1300              |
+|       10112 | 1952 Alpine Renault 1300              |
+|       10126 | 1952 Alpine Renault 1300              |
+|       10140 | 1952 Alpine Renault 1300              |
+|       10150 | 1952 Alpine Renault 1300              |
+|       10163 | 1952 Alpine Renault 1300              |
+|       10174 | 1952 Alpine Renault 1300              |
+|       10183 | 1952 Alpine Renault 1300              |
+|       10194 | 1952 Alpine Renault 1300              |
+|       10206 | 1952 Alpine Renault 1300              |
+|       10215 | 1952 Alpine Renault 1300              |
+|       10228 | 1952 Alpine Renault 1300              |
+|       10245 | 1952 Alpine Renault 1300              |
+|       10258 | 1952 Alpine Renault 1300              |
+|       10270 | 1952 Alpine Renault 1300              |
+|       10280 | 1952 Alpine Renault 1300              |
+|       10291 | 1952 Alpine Renault 1300              |
+|       10304 | 1952 Alpine Renault 1300              |
+|       10312 | 1952 Alpine Renault 1300              |
+|       10322 | 1952 Alpine Renault 1300              |
+|       10333 | 1952 Alpine Renault 1300              |
+|       10347 | 1952 Alpine Renault 1300              |
++-------------+---------------------------------------+
+50 rows in set (0.00 sec)
+
+2) list all the customer names who bought HMS BOUNTY
+
+QUERRY: select customername from customers where customernumber in (select customernumber from orders wehere ordernumber in (select ordernumber from orderdetails
+where productcode in (select productcode from products where productname='HMS BOUNTY')));
+
++------------------------------------+
+| customername                       |
++------------------------------------+
+| Euro+ Shopping Channel             |
+| Cambridge Collectables Co.         |
+| Toys of Finland, Co.               |
+| Auto-Moto Classics Inc.            |
+| Enaco Distributors                 |
+| Collectable Mini Designs Co.       |
+| giftsbymail.co.uk                  |
+| Alpha Cognac                       |
+| Royal Canadian Collectables, Ltd.  |
+| Rovelli Gifts                      |
+| Souveniers And Things Co.          |
+| Oulu Toy Supplies, Inc.            |
+| Mini Creations Ltd.                |
+| Classic Gift Ideas, Inc            |
+| Men 'R' US Retailers, Ltd.         |
+| Reims Collectables                 |
+| Collectables For Less Inc.         |
+| Salzburg Collectables              |
+| Tokyo Collectables, Ltd            |
+| Extreme Desk Decorations, Ltd      |
+| Bavarian Collectables Imports, Co. |
+| Gift Ideas Corp.                   |
+| Scandinavian Gift Ideas            |
+| The Sharp Gifts Warehouse          |
+| Australian Collectables, Ltd       |
+| Double Decker Gift Stores, Ltd     |
++------------------------------------+
+26 rows in set (0.21 sec)
+
+3) How many orders are there on sundays
+
+QUERRY:
+select count(*) from orders where dayname(orderdate)="sunday";
+
+RESULTS:
++----------+
+| count(*) |
++----------+
+|       11 |
++----------+
+1 row in set (0.00 sec)
+
+
+4) show how many day from 2005-05-31 to 2003-01-06
+
+SELECT DATEDIFF('2005-05-31','2003-01-06’); 
+
+RESULTS:
++-------------------------------------+
+| datediff('2005-05-31','2003-01-06') |
++-------------------------------------+
+|                                 876 |
++-------------------------------------+
+1 row in set (0.07 sec)
+
+5) Find average number of products ordered in a particular country
+
+Querry:
+ select avg(quantityordered) from orderdetails where ordernumber in (select ordernumber from orders where customernumber in (select customernumber 
+from customers where country="usa"));
+
+RESULTS:
+
++----------------------+
+| avg(quantityordered) |
++----------------------+
+|              35.7012 |
++----------------------+
+1 row in set (0.06 sec)
+
+6) find the customername which strings has numbers in it and in alphebatical order of customer name
+
+Querry:
+select customername, contactlastname, contactfirstname from customers where customername REGEXP '[0-9]' order by customername;
+
+RESULTS:
+-------------------+-----------------+------------------+
+ customername      | contactlastname | contactfirstname |
+-------------------+-----------------+------------------+
+ Gifts4AllAges.com | Yoshido         | Juri             |
+ Toys4GrownUps.com | Young           | Julie            |
+-------------------+-----------------+------------------+
+
+7) Find all the products which are not ordered yet
+
+querry:
+  select ( (select count(*) from products) - ( select count(*) from select count(ordernumber), productcode from orderdetails group by productcode)p )) as 
+countofnotordered;
+
+RESULTS:
++-------------------+
+| countofnotordered |
++-------------------+
+|                 1 |
++-------------------+
+1 row in set (0.11 sec)
+
+  
+
+
+8) list all the 30 productnames and number of products
+
+querry:
+    select productname, count(productname) from products group by productname limit 30;
+
+RESULTS:
+
++-------------------------------------------+--------------------+
+| productname                               | count(productname) |
++-------------------------------------------+--------------------+
+| 18th century schooner                     	|                  1 |
+| 18th Century Vintage Horse Carriage       |                  1 |
+| 1900s Vintage Bi-Plane                    	 |                  1 |
+| 1900s Vintage Tri-Plane                   	 |                  1 |
+| 1903 Ford Model A                        	 |                  1 |
+| 1904 Buick Runabout                       	  |                  1 |
+| 1911 Ford Town Car                      	  |                  1 |
+| 1912 Ford Model T Delivery Wagon          |                  1 |
+| 1913 Ford Model T Speedster              	  |                  1 |
+| 1917 Grand Touring Sedan                  	  |                  1 |
+| 1917 Maxwell Touring Car                 	  |                  1 |
+| 1926 Ford Fire Engine                     	  |                  1 |
+| 1928 British Royal Navy Airplane          	  |                  1 |
+| 1928 Ford Phaeton Deluxe                 	  |                  1 |
+| 1928 Mercedes-Benz SSK                   	 |                  1 |
+| 1930 Buick Marquette Phaeton             	 |                  1 |
+| 1932 Alfa Romeo 8C2300 Spider Sport   |                  1 |
+| 1932 Model A Ford J-Coupe                 	 |                  1 |
+| 1934 Ford V8 Coupe                        	 |                  1 |
+| 1936 Chrysler Airflow                     	 |                  1 |
+| 1936 Harley Davidson El Knucklehead    |                  1 |
+| 1936 Mercedes Benz 500k Roadster       |                  1 |
+| 1936 Mercedes-Benz 500K Special Roadster  |                  1 |
+| 1937 Horch 930V Limousine                	 |                  1 |
+| 1937 Lincoln Berline                     	 |                  1 |
+| 1938 Cadillac V-16 Presidential Limousine |                  1 |
+| 1939 Cadillac Limousine                   	|                  1 |
+| 1939 Chevrolet Deluxe Coupe               	|                  1 |
+| 1940 Ford Delivery Sedan                  	|                  1 |
+| 1940 Ford Pickup Truck                   	 |                  1 |
++-------------------------------------------+--------------------+
+30 rows in set (0.32 sec)
